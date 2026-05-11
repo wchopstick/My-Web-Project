@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云南·旅行记</title>
+    <link rel="stylesheet" href="../lib/swiper-bundle.min.css">
+    <style>
+        :root {
+            --green-dark: #3b5e4a;
+            --green-light: #6b8f7e;
+            --bg: #faf8f5;
+            --card-bg: #ffffff;
+            --text: #333;
+            --text-light: #666;
+            --border: #e0dcd5;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 5%;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .top-nav .logo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--green-dark);
+            letter-spacing: 2px;
+        }
+        .back-btn {
+            background: var(--green-dark);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover {
+            background: var(--green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(59,94,74,0.2);
+        }
+
+        .swiper {
+            width: 90%;
+            max-width: 1100px;
+            height: 420px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .swiper-slide .slide-caption {
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            color: white;
+            width: 100%;
+            padding: 40px 20px 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .swiper-pagination-bullet-active { background: white; }
+
+        .tips-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--green-dark);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .tip-card {
+            background: var(--card-bg);
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .tip-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .tip-card h3 {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--green-dark);
+        }
+        .tip-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .spots-block {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .spot-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        .spot-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+        }
+        .spot-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+        .spot-card .card-text {
+            padding: 18px 16px;
+        }
+        .spot-card h3 {
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--green-dark);
+        }
+        .spot-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .swiper { height: 250px; }
+            .top-nav .logo { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo">🌸 云南 · 彩云之南</div>
+        <a href="../FinalProject.html" class="back-btn">← 返回地图</a>
+    </div>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('../data/images/yunnan/丽江古城.png');">
+                <div class="slide-caption">丽江古城 · 小桥流水纳西情</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/yunnan/玉龙雪山.png');">
+                <div class="slide-caption">玉龙雪山 · 纳西神山的巍峨</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/yunnan/大理洱海.png');">
+                <div class="slide-caption">大理洱海 · 风花雪月的浪漫</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/yunnan/西双版纳.png');">
+                <div class="slide-caption">西双版纳 · 热带雨林的神秘</div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="tips-section">
+        <h2 class="section-title">📝 旅行锦囊</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🌺</div>
+                <h3>民族节日</h3>
+                <p>泼水节、火把节、目瑙纵歌节……少数民族节庆精彩纷呈。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🍜</div>
+                <h3>美食推荐</h3>
+                <p>过桥米线、鲜花饼、汽锅鸡、野生菌……舌尖上的云南。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🛤️</div>
+                <h3>旅游路线</h3>
+                <p>昆明-大理-丽江-香格里拉经典环线，或深度西双版纳。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🧴</div>
+                <h3>防晒防虫</h3>
+                <p>紫外线强烈，SPF50+防晒必备，热带地区注意蚊虫。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="spots-block">
+        <h2 class="section-title">🌿 自然风光</h2>
+        <div class="card-grid">
+            <div class="spot-card">
+                <img src="../data/images/yunnan/玉龙雪山.png" alt="玉龙雪山">
+                <div class="card-text">
+                    <h3>玉龙雪山</h3>
+                    <p>北半球最南的雪山，有现代冰川，纳西族心中的神山。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/普达措国家公园.png" alt="普达措国家公园">
+                <div class="card-text">
+                    <h3>普达措国家公园</h3>
+                    <p>世界自然遗产"三江并流"核心区，高山湖泊、草甸、森林。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/泸沽湖.png" alt="泸沽湖">
+                <div class="card-text">
+                    <h3>泸沽湖</h3>
+                    <p>高原淡水湖，摩梭人"母系社会"和"走婚"文化所在地。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/石林.png" alt="石林">
+                <div class="card-text">
+                    <h3>石林</h3>
+                    <p>世界自然遗产，喀斯特地貌精华，鬼斧神工的石头森林。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/西双版纳.png" alt="西双版纳热带雨林">
+                <div class="card-text">
+                    <h3>西双版纳热带雨林</h3>
+                    <p>中国唯一热带雨林自然保护区，生物多样性丰富。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spots-block">
+        <h2 class="section-title">🏛️ 人文瑰宝</h2>
+        <div class="card-grid">
+            <div class="spot-card">
+                <img src="../data/images/yunnan/丽江古城.png" alt="丽江古城">
+                <div class="card-text">
+                    <h3>丽江古城</h3>
+                    <p>世界文化遗产，纳西族文化中心，保存完好的少数民族古城。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/大理崇圣寺三塔.png" alt="大理崇圣寺三塔">
+                <div class="card-text">
+                    <h3>大理崇圣寺三塔</h3>
+                    <p>南诏、大理国时期佛教建筑，苍山洱海间的标志性景观。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/香格里拉松赞林寺.png" alt="香格里拉松赞林寺">
+                <div class="card-text">
+                    <h3>香格里拉松赞林寺</h3>
+                    <p>云南最大藏传佛教寺院，有"小布达拉宫"之称。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/yunnan/和顺古镇.png" alt="和顺古镇">
+                <div class="card-text">
+                    <h3>和顺古镇</h3>
+                    <p>著名侨乡，马帮文化、中西合璧建筑的时光印记。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌏 旅途愉快 · 每一段风景都值得纪念
+    </footer>
+
+    <script src="../lib/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

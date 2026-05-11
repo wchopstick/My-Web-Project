@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重庆·旅行记</title>
+    <link rel="stylesheet" href="../lib/swiper-bundle.min.css">
+    <style>
+        :root {
+            --green-dark: #3b5e4a;
+            --green-light: #6b8f7e;
+            --bg: #faf8f5;
+            --card-bg: #ffffff;
+            --text: #333;
+            --text-light: #666;
+            --border: #e0dcd5;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 5%;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .top-nav .logo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--green-dark);
+            letter-spacing: 2px;
+        }
+        .back-btn {
+            background: var(--green-dark);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover {
+            background: var(--green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(59,94,74,0.2);
+        }
+
+        .swiper {
+            width: 90%;
+            max-width: 1100px;
+            height: 420px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .swiper-slide .slide-caption {
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            color: white;
+            width: 100%;
+            padding: 40px 20px 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .swiper-pagination-bullet-active { background: white; }
+
+        .tips-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--green-dark);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .tip-card {
+            background: var(--card-bg);
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .tip-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .tip-card h3 {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--green-dark);
+        }
+        .tip-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .spots-block {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .spot-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        .spot-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+        }
+        .spot-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+        .spot-card .card-text {
+            padding: 18px 16px;
+        }
+        .spot-card h3 {
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--green-dark);
+        }
+        .spot-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .swiper { height: 250px; }
+            .top-nav .logo { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo">🌶️ 重庆 · 雾都奇遇</div>
+        <a href="../FinalProject.html" class="back-btn">← 返回地图</a>
+    </div>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('../data/images/chongqing/洪崖洞.jpg');">
+                <div class="slide-caption">洪崖洞 · 山城夜景的璀璨明珠</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/chongqing/武陵.jpg');">
+                <div class="slide-caption">武隆天生三桥 · 大自然的鬼斧神工</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/chongqing/磁器口.jpg');">
+                <div class="slide-caption">磁器口古镇 · 千年巴渝风情</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/chongqing/三峡.jpg');">
+                <div class="slide-caption">长江三峡 · 山水画廊的诗画长卷</div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="tips-section">
+        <h2 class="section-title">📝 旅行锦囊</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">🌶️</div>
+                <h3>美食天堂</h3>
+                <p>火锅、小面、酸辣粉……火辣山城孕育最地道的江湖味道。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🚠</div>
+                <h3>魔幻交通</h3>
+                <p>轻轨穿楼而过，索道飞渡长江，导航在这里可能"失灵"。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🌁</div>
+                <h3>最佳季节</h3>
+                <p>春秋两季最宜游玩，夏季虽热但火锅配冰啤才是真爱。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">📸</div>
+                <h3>拍照打卡</h3>
+                <p>解放碑、长江索道、南山一棵树，夜景美得不像话。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="spots-block">
+        <h2 class="section-title">🌿 自然风光</h2>
+        <div class="card-grid">
+            <div class="spot-card">
+                <img src="../data/images/chongqing/武陵.jpg" alt="武隆天生三桥">
+                <div class="card-text">
+                    <h3>武隆天生三桥</h3>
+                    <p>世界自然遗产，规模最大的天生桥群，电影取景地。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/三峡.jpg" alt="长江三峡">
+                <div class="card-text">
+                    <h3>长江三峡</h3>
+                    <p>自然与文化双重遗产，山水画廊，瞿塘雄、巫峡幽、西陵险。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/金佛山.jpg" alt="金佛山">
+                <div class="card-text">
+                    <h3>金佛山</h3>
+                    <p>世界自然遗产，喀斯特台原，生物多样性丰富。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/仙女山.jpg" alt="仙女山">
+                <div class="card-text">
+                    <h3>仙女山国家森林公园</h3>
+                    <p>高山草原、林海雪原，避暑胜地，江南独具魅力的林海。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spots-block">
+        <h2 class="section-title">🏛️ 人文瑰宝</h2>
+        <div class="card-grid">
+            <div class="spot-card">
+                <img src="../data/images/chongqing/洪崖洞.jpg" alt="洪崖洞">
+                <div class="card-text">
+                    <h3>洪崖洞民俗风貌区</h3>
+                    <p>依山而建的吊脚楼群，夜景璀璨，重庆标志性景观。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/磁器口.jpg" alt="磁器口">
+                <div class="card-text">
+                    <h3>磁器口古镇</h3>
+                    <p>明清建筑群，巴渝民俗文化街区，古镇悠悠时光。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/大足.jpg" alt="大足石刻">
+                <div class="card-text">
+                    <h3>大足石刻</h3>
+                    <p>世界文化遗产，唐宋时期摩崖石刻，佛教艺术瑰宝。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/瞿塘峡.jpg" alt="白帝城">
+                <div class="card-text">
+                    <h3>白帝城·瞿塘峡</h3>
+                    <p>刘备托孤之地，10元人民币背景"夔门"取景地。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/chongqing/816.jpg" alt="816工程">
+                <div class="card-text">
+                    <h3>816工程景区</h3>
+                    <p>三线建设时期地下核工程遗址，国防历史见证。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌏 旅途愉快 · 每一段风景都值得纪念
+    </footer>
+
+    <script src="../lib/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

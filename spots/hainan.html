@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海南·旅行记</title>
+    <link rel="stylesheet" href="../lib/swiper-bundle.min.css">
+    <style>
+        :root {
+            --green-dark: #3b5e4a;
+            --green-light: #6b8f7e;
+            --bg: #faf8f5;
+            --card-bg: #ffffff;
+            --text: #333;
+            --text-light: #666;
+            --border: #e0dcd5;
+            --shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 5%;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .top-nav .logo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--green-dark);
+            letter-spacing: 2px;
+        }
+        .back-btn {
+            background: var(--green-dark);
+            color: white;
+            padding: 8px 18px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover {
+            background: var(--green-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(59,94,74,0.2);
+        }
+
+        .swiper {
+            width: 90%;
+            max-width: 1100px;
+            height: 420px;
+            margin: 30px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .swiper-slide .slide-caption {
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            color: white;
+            width: 100%;
+            padding: 40px 20px 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .swiper-pagination-bullet-active { background: white; }
+
+        .tips-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--green-dark);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .tip-card {
+            background: var(--card-bg);
+            padding: 24px 20px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .tip-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
+        }
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+        .tip-card h3 {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--green-dark);
+        }
+        .tip-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .spots-block {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .spot-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+        }
+        .spot-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+        }
+        .spot-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 1px solid var(--border);
+        }
+        .spot-card .card-text {
+            padding: 18px 16px;
+        }
+        .spot-card h3 {
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--green-dark);
+        }
+        .spot-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .swiper { height: 250px; }
+            .top-nav .logo { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="logo">🌴 海南 · 热带天堂</div>
+        <a href="../FinalProject.html" class="back-btn">← 返回地图</a>
+    </div>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url('../data/images/hainan/亚龙湾.png');">
+                <div class="slide-caption">亚龙湾 · 天下第一湾的碧海银沙</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/hainan/蜈支洲岛.png');">
+                <div class="slide-caption">蜈支洲岛 · 中国的马尔代夫</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/hainan/南山海上观音.png');">
+                <div class="slide-caption">南山海上观音 · 慈悲为怀的圣像</div>
+            </div>
+            <div class="swiper-slide" style="background-image: url('../data/images/hainan/天涯海角.png');">
+                <div class="slide-caption">天涯海角 · 浪漫爱情的圣地</div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="tips-section">
+        <h2 class="section-title">📝 旅行锦囊</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <div class="tip-icon">☀️</div>
+                <h3>最佳季节</h3>
+                <p>11月至次年4月为旱季，天气最宜人，避开台风季。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🕶️</div>
+                <h3>防晒必备</h3>
+                <p>热带阳光强烈，SPF50+防晒霜、墨镜、遮阳帽缺一不可。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🏄</div>
+                <h3>水上运动</h3>
+                <p>潜水、香蕉船、帆板……蜈支洲岛是水上运动的天堂。</p>
+            </div>
+            <div class="tip-card">
+                <div class="tip-icon">🥥</div>
+                <h3>美食推荐</h3>
+                <p>文昌鸡、椰子鸡、和乐蟹、热带水果……鲜到飞起！</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="spots-block">
+        <h2 class="section-title">🌿 自然风光</h2>
+        <div class="card-grid">
+            <div class="spot-card">
+                <img src="../data/images/hainan/亚龙湾.png" alt="亚龙湾">
+                <div class="card-text">
+                    <h3>亚龙湾</h3>
+                    <p>"天下第一湾"，沙白水清，热带海滨风光的典范。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/蜈支洲岛.png" alt="蜈支洲岛">
+                <div class="card-text">
+                    <h3>蜈支洲岛</h3>
+                    <p>热带海岛，海水能见度极高，水上运动的绝佳胜地。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/分界洲岛.png" alt="分界洲岛">
+                <div class="card-text">
+                    <h3>分界洲岛</h3>
+                    <p>海洋生态旅游岛，可观赏珊瑚和海洋生物的潜水天堂。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/五指山.png" alt="五指山">
+                <div class="card-text">
+                    <h3>五指山</h3>
+                    <p>海南最高峰，热带原始雨林，登山探险的好去处。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/呀诺达雨林.png" alt="呀诺达雨林">
+                <div class="card-text">
+                    <h3>呀诺达雨林</h3>
+                    <p>中国钻石级雨林景区，热带雨林景观与黎族风情。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="spots-block">
+        <h2 class="section-title">🏛️ 人文瑰宝</h2>
+        <div class="card-grid">
+            <div class="spot-card">
+                <img src="../data/images/hainan/骑楼老街.png" alt="海口骑楼老街">
+                <div class="card-text">
+                    <h3>海口骑楼老街</h3>
+                    <p>南洋风格建筑群，百年历史商业街，岁月沉淀的韵味。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/文昌航天发射场.png" alt="文昌航天发射场">
+                <div class="card-text">
+                    <h3>文昌航天发射场</h3>
+                    <p>中国首个滨海发射基地，可参观航天科普展览。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/天涯海角.png" alt="天涯海角">
+                <div class="card-text">
+                    <h3>天涯海角</h3>
+                    <p>著名海滨石刻景观，寓意执子之手与子偕老的浪漫。</p>
+                </div>
+            </div>
+            <div class="spot-card">
+                <img src="../data/images/hainan/南山海上观音.png" alt="南山文化旅游区">
+                <div class="card-text">
+                    <h3>南山文化旅游区</h3>
+                    <p>108米海上观音像，佛教文化圣地，静心祈福之地。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        🌏 旅途愉快 · 每一段风景都值得纪念
+    </footer>
+
+    <script src="../lib/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper('.mySwiper', {
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+</html>

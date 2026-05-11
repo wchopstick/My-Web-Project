@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国旅游地图</title>
+    <link rel="icon" href="data:image/svg+xml,<svg viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏞️</text></svg>">
+    <link rel="stylesheet" href="lib/leaflet.css" />
+    <link rel="stylesheet" href="FinalProject.css" />
+</head>
+<body>
+    <!-- 顶部介绍区 -->
+    <div id="intro">
+        <div class="intro-content">
+            <span class="logo-icon">🏞️</span>
+            <h3>中国旅游地图</h3>
+            <p>欢迎使用中国旅游地图！点击地图上的热门旅游地区，查看详细景点介绍。</p>
+            <p class="supported-text">目前支持：云南 · 海南 · 北京 · 上海 · 重庆 · 四川 · 西藏 · 新疆 · 湖南 · 广西</p>
+            <p class="note-text">其他地区敬请期待</p>
+        </div>
+        <!-- 热门目的地快速入口 -->
+        <div class="hot-tags">
+            <a href="./spots/yunnan.html" class="tag">云南</a>
+            <a href="./spots/hainan.html" class="tag">海南</a>
+            <a href="./spots/beijing.html" class="tag">北京</a>
+            <a href="./spots/shanghai.html" class="tag">上海</a>
+            <a href="./spots/chongqing.html" class="tag">重庆</a>
+            <a href="./spots/sichuan.html" class="tag">四川</a>
+            <a href="./spots/xizang.html" class="tag">西藏</a>
+            <a href="./spots/xinjiang.html" class="tag">新疆</a>
+            <a href="./spots/hunan.html" class="tag">湖南</a>
+            <a href="./spots/guangxi.html" class="tag">广西</a>
+        </div>
+    </div>
+
+    <!-- 地图区域 -->
+    <div id="map-wrapper">
+        <div id="map-container">
+            <div id="map"></div>
+            <button id="toggleLegend" title="显示/隐藏图例">隐藏图例</button>
+            <div id="legend">
+                <h4>图例</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #ffcccc;"></div>
+                    <span>热门旅游地区（可跳转）</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #cceeff;"></div>
+                    <span>其他地区（暂未开放）</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./lib/leaflet.js"></script>
+    <script src="FinalProject.js"></script>
+</body>
+</html>
