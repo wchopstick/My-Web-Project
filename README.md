@@ -3,7 +3,9 @@
 由 湖南师范大学（HNNU）计算机科学与技术（普高师范）专业 — wchopstick 创建
 
 ## 简介
-这是一个纯前端的交互式中国旅游地图项目（FinalProject）。无需后端服务器，直接在浏览器中打开即可使用。用户可探索 10 个省/直辖市的热门景点，查看每个地区的景点详情与图片。
+这是一个纯前端的交互式中国旅游地图项目（FinalProject）。无需后端服务器，直接在浏览器中打开即可使用。用户可探索 10 个省/直辖市的热门景点，[...] 
+
+网站（GitHub Pages）：[https://wchopstick.github.io/My-Web-Project/](https://wchopstick.github.io/My-Web-Project/)
 
 ## 项目结构（概要）
 
